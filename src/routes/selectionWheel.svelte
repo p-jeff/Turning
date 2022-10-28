@@ -48,13 +48,25 @@
 		<SelectionEntry name={entry.name} {i} {animDirection} />
 	{/each}
 
-	<h2
-		class="selected"
-		style:margin-left="{content.length * 30 - 20}px"
-		style:font-size="{content.length * 5}px"
-	>
-		{selected.name}
-	</h2>
+	<table>
+		<tr>
+			<td
+				><h2
+					class="selected"
+					style:margin-left="{content.length * 30 - 20}px"
+					style:font-size="{content.length * 5}px"
+				>
+					{selected.name}
+				</h2>
+			</td>
+			<td />
+			<td />
+			<td />
+			<td />
+			<td />
+			<td />
+		</tr>
+	</table>
 </div>
 
 <style>
@@ -65,5 +77,13 @@
 
 	.selected {
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	}
+	table {
+		width: 100%;
+	}
+	td {
+		width: 10%;
+		border: 2px solid white;
+		padding: 0px;
 	}
 </style>

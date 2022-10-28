@@ -9,6 +9,6 @@
 		position: absolute;
 		left: -400px;
 		top: 130px;
-		border: 1px white solid;
+		border: 2px white solid;
 	}
 </style>
