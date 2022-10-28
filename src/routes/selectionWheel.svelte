@@ -1,12 +1,7 @@
 <script>
-	import anime from 'animejs';
-	import { onMount } from 'svelte';
+	import SelectionEntry from './selectionEntry.svelte';
 
-	onMount(() => {
-		let selectorAnimation = anime({
-			targets: '.selected'
-		});
-	});
+	let animDirection;
 
 	let content = [
 		{ id: 1, name: 'Entry1' },
@@ -24,11 +19,13 @@
 			content.push(selected);
 			selected = content.shift();
 			content = content;
+			animDirection = 'up';
 		}
 		if (direction === 'down') {
 			content.unshift(selected);
 			selected = content.pop();
 			content = content;
+			animDirection = 'down';
 		}
 	}
 
@@ -38,7 +35,6 @@
 			changeSelection('down');
 		} else if (event.wheelDelta <= -100) {
 			changeSelection('up');
-			console.log('uppetey');
 		} else {
 			console.log('not scrolling enough');
 		}
@@ -49,14 +45,12 @@
 
 <div>
 	{#each content as entry, i}
-		<h2 style:margin-left="{i * 30}px" style:font-size="{i * 5}px">
-			{entry.name}
-		</h2>
+		<SelectionEntry name={entry.name} {i} {animDirection} />
 	{/each}
 
 	<h2
 		class="selected"
-		style:margin-left="{content.length * 30}px"
+		style:margin-left="{content.length * 30 - 20}px"
 		style:font-size="{content.length * 5}px"
 	>
 		{selected.name}
@@ -65,12 +59,11 @@
 
 <style>
 	div {
-		background-color: aqua;
-		overflow: scroll;
+		overflow: hidden;
 		width: 100%;
 	}
 
 	.selected {
-		color: #ff0000;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	}
 </style>

@@ -1,12 +1,16 @@
 <script>
+	import Circle from './circle.svelte';
 	import SelectionWheel from './selectionWheel.svelte';
+	import '../styles.css';
 </script>
+
+<Circle />
 
 <div>
 	<SelectionWheel />
 </div>
 
-<h1>Turning the Gears Tech Demo</h1>
+<h2>Turning the Gears Tech Demo</h2>
 
 <style>
 	div {
@@ -17,7 +21,7 @@
 		z-index: 1;
 	}
 
-	h1 {
+	h2 {
 		position: absolute;
 		right: 2%;
 		bottom: 2%;
