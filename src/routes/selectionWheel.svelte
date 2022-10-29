@@ -143,7 +143,4 @@
 		right: 2%;
 		color: white;
 	}
-	.content {
-		text-align: center;
-	}
 </style>
