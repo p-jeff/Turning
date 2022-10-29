@@ -1,5 +1,6 @@
 <script>
 	import Appearing from './appearing.svelte';
+	import Rotating from './rotating.svelte';
 	import SelectionEntry from './selectionEntry.svelte';
 
 	let animDirection,
@@ -9,7 +10,7 @@
 
 	let content = [
 		{ id: 1, name: 'Appear', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
-		{ id: 2, name: 'Entry2', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
+		{ id: 2, name: 'Rotate', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
 		{ id: 3, name: 'Entry3', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
 		{ id: 4, name: 'Entry4', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
 		{ id: 5, name: 'Entry5', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
@@ -56,8 +57,6 @@
 		}
 		if (event.key === 'Enter') {
 			chosen = !chosen;
-			chosen = chosen;
-			console.log(chosen);
 		}
 	}
 </script>
@@ -82,11 +81,25 @@
 			</td>
 
 			{#if chosen}
-				{#each selected.content as tag, i}
-					<td>
-						<Appearing {tag} {i} />
-					</td>
-				{/each}
+				{#if selected.name === 'Appear'}
+					{#each selected.content as tag, i}
+						<td>
+							<Appearing {tag} {i} />
+						</td>
+					{/each}
+				{:else if selected.name === 'Rotate'}
+					{#each selected.content as tag, i}
+						<td>
+							<Rotating {tag} />
+						</td>
+					{/each}
+				{:else}
+					{#each selected.content as tag, i}
+						<td>
+							<h2>{tag}</h2>
+						</td>
+					{/each}
+				{/if}
 			{:else}
 				{#each selected.content as tag}
 					<td />
