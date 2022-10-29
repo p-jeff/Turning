@@ -36,27 +36,36 @@
 	}
 
 	function handleScroll(event) {
-		console.log(event.wheelDelta);
-		if (event.wheelDelta > scrollSensitivity) {
-			changeSelection('down');
-		} else if (event.wheelDelta <= scrollSensitivity * -1) {
-			changeSelection('up');
+		if (!chosen) {
+			if (event.wheelDelta > scrollSensitivity) {
+				changeSelection('down');
+			} else if (event.wheelDelta <= scrollSensitivity * -1) {
+				changeSelection('up');
+			} else {
+			}
 		} else {
 		}
 	}
 
 	function handleKeydown(event) {
-		if (event.key === 'Backspace') {
+		if (event.key === 's') {
 			settings = !settings;
 		}
 		if (event.key === 'ArrowUp') {
-			changeSelection('up');
+			if (!chosen) {
+				changeSelection('up');
+			}
 		}
 		if (event.key === 'ArrowDown') {
-			changeSelection('down');
+			if (!chosen) {
+				changeSelection('down');
+			}
 		}
 		if (event.key === 'Enter') {
-			chosen = !chosen;
+			chosen = true;
+		}
+		if (event.key === 'Backspace') {
+			chosen = false;
 		}
 	}
 </script>
