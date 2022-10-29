@@ -5,17 +5,6 @@
 	import { createAnimationTriggerAction } from 'svelte-trigger-action';
 
 	const { triggerAnimation, animationAction } = createAnimationTriggerAction();
-	/*import anime from 'animejs';
-	
-
-	afterUpdate(() => {
-		let appearAnimation = anime({
-			targets: 'box',
-			duration: '3000ms',
-			color: '#FF0000'
-		});
-		console.log('UPDATED');
-	});*/
 
 	afterUpdate(() => {
 		triggerAnimation('appearing');
