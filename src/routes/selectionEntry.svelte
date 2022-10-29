@@ -1,12 +1,12 @@
 <script>
 	import { afterUpdate } from 'svelte';
+	import { createAnimationTriggerAction } from 'svelte-trigger-action';
 
 	export let i;
 	export let name;
 	export let animDirection;
 	let up;
 
-	import { createAnimationTriggerAction } from 'svelte-trigger-action';
 	const { triggerAnimation, animationAction } = createAnimationTriggerAction();
 
 	afterUpdate(() => {
@@ -39,19 +39,19 @@
 
 	@keyframes shakeDown {
 		10% {
-			transform: translate(0px, 3px);
+			transform: translate(0px, 4px);
 		}
 		90% {
-			transform: translate(0px, 5px);
+			transform: translate(0px, 6px);
 		}
 	}
 
 	@keyframes shakeUp {
 		10% {
-			transform: translate(0px, -3px);
+			transform: translate(0px, -4px);
 		}
 		90% {
-			transform: translate(0px, -5px);
+			transform: translate(0px, -6px);
 		}
 	}
 </style>
