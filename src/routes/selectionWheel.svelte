@@ -2,11 +2,14 @@
 	import Appearing from './appearing.svelte';
 	import Rotating from './rotating.svelte';
 	import SelectionEntry from './selectionEntry.svelte';
+	import { Howl } from 'howler';
+	import { onMount } from 'svelte';
 
 	let animDirection,
 		scrollSensitivity = 100,
 		settings = false,
-		chosen = false;
+		chosen = false,
+		click;
 
 	let content = [
 		{ id: 1, name: 'Appear', content: ['Content', 'Content', 'Content', 'Content', 'Content'] },
@@ -21,6 +24,7 @@
 	let selected = content.pop();
 
 	function changeSelection(direction) {
+		click.play();
 		if (direction === 'up') {
 			content.push(selected);
 			selected = content.shift();
@@ -68,6 +72,12 @@
 			chosen = false;
 		}
 	}
+
+	onMount(() => {
+		click = new Howl({
+			src: ['click.wav']
+		});
+	});
 </script>
 
 <svelte:window on:mousewheel={handleScroll} on:keydown={handleKeydown} />
@@ -117,6 +127,8 @@
 	</table>
 </div>
 
+<audio src="click.wav" preload="auto" bind:this={click} />
+
 {#if settings}
 	<label>
 		Scroll {scrollSensitivity}
@@ -151,8 +163,5 @@
 		top: 2%;
 		right: 2%;
 		color: white;
-	}
-	.content {
-		text-align: center;
 	}
 </style>
